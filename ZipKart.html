@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZipCart — Guaranteed Fresh. Always in Stock. | Blinkit-Style Quick Commerce</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            zipBlue: '#0066FF',
+            zipCyan: '#00D4B2',
+            blinkGreen: '#0C831F',
+            blinkLightGreen: '#F7FFF9',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: #F8FAFC;
+      color: #0F172A;
+      overflow-x: hidden;
+    }
+    .zip-gradient {
+      background: linear-gradient(135deg, #0052D4 0%, #0066FF 50%, #00D4B2 100%);
+    }
+    .card-shadow {
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
+    }
+    .card-shadow:hover {
+      box-shadow: 0 8px 24px rgba(0, 102, 255, 0.10);
+    }
+    /* Dropdown hover & focus behavior */
+    .nav-dropdown-group:hover .nav-dropdown-menu,
+    .nav-dropdown-group:focus-within .nav-dropdown-menu {
+      display: block;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- TOP TRUST & ZERO-FEE BAR -->
+  <div class="bg-slate-900 text-white text-xs py-2 px-4 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-3 flex-wrap">
+        <span class="inline-flex items-center gap-1.5 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-0.5 rounded-full font-semibold">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          100% Dark Store Inventory Sync
+        </span>
+        <span class="text-slate-400 hidden sm:inline">•</span>
+        <span class="font-medium text-cyan-300">₹0 Handling Fee &amp; ₹0 Rain/Surge Fee</span>
+        <span class="text-slate-400 hidden md:inline">•</span>
+        <span class="text-slate-300 hidden md:inline">Cold-Chain Verified (3.6°C Live)</span>
+      </div>
+      <div class="text-[11px] text-slate-300 font-semibold">
+        Digital Marketing SEC 2 — Group 5 Quick Commerce Platform
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY BLINKIT-STYLE HEADER WITH THE 5 MAIN HEADS & SUBHEAD DROPDOWNS -->
+  <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6">
+      <!-- Top Row: Brand Logo + Delivery SLA + Search Bar + Quick MyKart Button -->
+      <div class="flex items-center justify-between h-16 sm:h-20 gap-3">
+        <!-- Brand Logo & Location -->
+        <div class="flex items-center gap-3 sm:gap-5 shrink-0">
+          <button type="button" onclick="navigateTo('store', 'All Products')" class="flex items-center gap-2.5 text-left group">
+            <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl zip-gradient flex items-center justify-center text-white font-black text-xl shadow-md">
+              Z
+            </div>
+            <div>
+              <span class="text-xl sm:text-2xl font-black tracking-tight text-slate-900">Zip<span class="text-zipBlue">Cart</span></span>
+              <p class="text-[10px] sm:text-xs font-semibold text-emerald-600 leading-none">Guaranteed Fresh. Always in Stock.</p>
+            </div>
+          </button>
+
+          <div class="h-9 w-px bg-slate-200 hidden md:block"></div>
+
+          <div class="hidden md:flex flex-col text-left">
+            <div class="flex items-center gap-1.5">
+              <span class="text-sm font-extrabold text-slate-900">Delivery in 17 minutes</span>
+              <span class="text-[10px] font-bold bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded">100% IN-STOCK</span>
+            </div>
+            <span class="text-xs text-slate-500 font-medium">North Campus Hub, Delhi (Tier 1 Metro)</span>
+          </div>
+        </div>
+
+        <!-- Search Input -->
+        <div class="flex-1 max-w-lg">
+          <div class="relative flex items-center">
+            <svg class="w-4 h-4 text-slate-400 absolute left-3.5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+            <input
+              id="searchInput"
+              type="text"
+              placeholder='Search "milk", "chips", "maggi", "paneer", "fruits"...'
+              class="w-full pl-10 pr-4 py-2 sm:py-2.5 bg-slate-100 focus:bg-white rounded-xl border border-slate-200 focus:border-zipBlue text-xs sm:text-sm outline-none transition"
+            />
+          </div>
+        </div>
+
+        <!-- Direct MyKart Header Pill -->
+        <button
+          type="button"
+          onclick="navigateTo('mykart', 'MyKart')"
+          class="flex items-center gap-2.5 bg-blinkGreen hover:bg-emerald-700 text-white px-3.5 sm:px-4 py-2 rounded-xl font-bold shadow-sm transition shrink-0"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+          </svg>
+          <div class="text-left leading-tight">
+            <div class="text-[10px] font-extrabold uppercase tracking-wider text-emerald-200">MyKart (25BC216)</div>
+            <div class="text-xs sm:text-sm font-black"><span id="headerCartCount">3 items</span> • <span id="headerCartTotal">₹244</span></div>
+          </div>
+        </button>
+      </div>
+
+      <!-- Second Row: THE 5 MAIN HEADS & NESTED SUBHEAD DROPDOWNS -->
+      <nav class="flex items-center gap-1 sm:gap-2 py-2 border-t border-slate-100 overflow-x-auto no-scrollbar">
+
+        <!-- 1. Store (25BC225) -->
+        <div class="relative nav-dropdown-group shrink-0">
+          <button
+            type="button"
+            id="headBtn-store"
+            onclick="navigateTo('store', 'All Products')"
+            class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-extrabold flex items-center gap-1.5 transition bg-zipBlue text-white"
+          >
+            <span>🛒 Store (25BC225)</span>
+            <svg class="w-3.5 h-3.5 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="nav-dropdown-menu hidden absolute left-0 mt-1 w-56 bg-white rounded-2xl shadow-xl border border-slate-200 py-2 z-50">
+            <div class="px-3 py-1 text-[10px] font-extrabold uppercase text-slate-400">Store Categories (25BC225)</div>
+            <button type="button" onclick="navigateTo('store', 'All Products')" class="w-full text-left px-4 py-2 text-xs font-bold text-slate-700 hover:bg-blue-50 hover:text-zipBlue">All Products</button>
+            <button type="button" onclick="navigateTo('store', 'Fruits & Vegetables')" class="w-full text-left px-4 py-2 text-xs font-bold text-slate-700 hover:bg-blue-50 hover:text-zipBlue">Fruits &amp; Vegetables</button>
+            <button type="button" onclick="navigateTo('store', 'Dairy & Bakery')" class="w-full text-left px-4 py-2 text-xs font-bold text-slate-700 hover:bg-blue-50 hover:text-zipBlue">Dairy &amp; Bakery</button>
+            <button type="button" onclick="navigateTo('store', 'Snacks & Beverages')" class="w-full text-left px-4 py-2 text-xs font-bold text-slate-700 hover:bg-blue-50 hover:text-zipBlue">Snacks &amp; Beverages</button>
+            <button type="button" onclick="navigateTo('store', 'Instant Food')" class="w-full text-left px-4 py-2 text-xs font-bold text-slate-700 hover:bg-blue-50 hover:text-zipBlue">Instant Food</button>
+            <button type="button" onclick="navigateTo('store', 'Personal Care')" class="w-full text-left px-4 py-2 text-xs font-bold text-slate-700 hover:bg-blue-50 hover:text-zipBlue">Personal Care</button>
+            <button type="button" onclick="navigateTo('store', 'Home & Kitchen')" class="w-full text-left px-4 py-2 text-xs font-bold text-slate-700 hover:bg-blue-50 hover:text-zipBlue">Home &amp; Kitchen</button>
+            <button type="button" onclick="navigateTo('store', 'Other Categories')" class="w-full text-left px-4 py-2 text-xs font-bold text-slate-700 hover:bg-blue-50 hover:text-zipBlue">Other Categories</button>
+          </div>
+        </div>
+
+        <!-- 2. CUSTOMER SUPPORT (25BC224) -->
+        <div class="relative nav-dropdown-group shrink-0">
+          <button
+            type="button"
+            id="headBtn-support"
+            onclick="navigateTo('support', 'Help Centre')"
+            class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-extrabold flex items-center gap-1.5 transition bg-slate-100 text-slate-700 hover:bg-slate-200"
+          >
+            <span>🎧 CUSTOMER SUPPORT (25BC224)</span>
+            <svg class="w-3.5 h-3.5 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="nav-dropdown-menu hidden absolute left-0 mt-1 w-56 bg-white rounded-2xl shadow-xl border border-slate-200 py-2 z-50">
+            <div class="px-3 py-1 text-[10px] font-extrabold uppercase text-slate-400">Customer Support (25BC224)</div>
+            <button type="button" onclick="navigateTo('support', 'Help Centre')" class="w-full text-left px-4 py-2 text-xs font-bold text-slate-700 hover:bg-blue-50 hover:text-zipBlue">Help Centre</button>
+            <button type="button" onclick="navigateTo('support', 'FAQs')" class="w-full text-left px-4 py-2 text-xs font-bold text-slate-700 hover:bg-blue-50 hover:text-zipBlue">FAQs</button>
+            <button type="button" onclick="navigateTo('support', 'Contact Us')" class="w-full text-left px-4 py-2 text-xs font-bold text-slate-700 hover:bg-blue-50 hover:text-zipBlue">Contact Us</button>
+            <button type="button" onclick="navigateTo('support', 'Cancellation Policy')" class="w-full text-left px-4 py-2 text-xs font-bold text-slate-700 hover:bg-blue-50 hover:text-zipBlue">Cancellation Policy</button>
+            <button type="button" onclick="navigateTo('support', 'Returns & Refunds')" class="w-full text-left px-4 py-2 text-xs font-bold text-slate-700 hover:bg-blue-50 hover:text-zipBlue">Returns &amp; Refunds</button>
+          </div>
+        </div>
+
+        <!-- 3. POLICIES (25BC215) -->
+        <div class="relative nav-dropdown-group shrink-0">
+          <button
+            type="button"
+            id="headBtn-policies"
+            onclick="navigateTo('policies', 'Privacy Policy')"
+            class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-extrabold flex items-center gap-1.5 transition bg-slate-100 text-slate-700 hover:bg-slate-200"
+          >
+            <span>📜 POLICIES (25BC215)</span>
+            <svg class="w-3.5 h-3.5 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="nav-dropdown-menu hidden absolute left-0 mt-1 w-56 bg-white rounded-2xl shadow-xl border border-slate-200 py-2 z-50">
+            <div class="px-3 py-1 text-[10px] font-extrabold uppercase text-slate-400">Platform Policies (25BC215)</div>
+            <button type="button" onclick="navigateTo('policies', 'Privacy Policy')" class="w-full text-left px-4 py-2 text-xs font-bold text-slate-700 hover:bg-blue-50 hover:text-zipBlue">Privacy Policy</button>
+            <button type="button" onclick="navigateTo('policies', 'Terms & Conditions')" class="w-full text-left px-4 py-2 text-xs font-bold text-slate-700 hover:bg-blue-50 hover:text-zipBlue">Terms &amp; Conditions</button>
+            <button type="button" onclick="navigateTo('policies', 'Delivery Policy')" class="w-full text-left px-4 py-2 text-xs font-bold text-slate-700 hover:bg-blue-50 hover:text-zipBlue">Delivery Policy</button>
+            <button type="button" onclick="navigateTo('policies', 'Grievance Redressal')" class="w-full text-left px-4 py-2 text-xs font-bold text-slate-700 hover:bg-blue-50 hover:text-zipBlue">Grievance Redressal</button>
+          </div>
+        </div>
+
+        <!-- 4. MyKart (25BC216) -->
+        <div class="relative shrink-0">
+          <button
+            type="button"
+            id="headBtn-mykart"
+            onclick="navigateTo('mykart', 'MyKart')"
+            class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-extrabold flex items-center gap-1.5 transition bg-slate-100 text-slate-700 hover:bg-slate-200"
+          >
+            <span>🛍️ MyKart (25BC216)</span>
+            <span id="navKartBadge" class="bg-blinkGreen text-white text-[10px] px-1.5 py-0.5 rounded-full">3</span>
+          </button>
+        </div>
+
+        <!-- 5. ACCOUNT (25BC227) -->
+        <div class="relative nav-dropdown-group shrink-0">
+          <button
+            type="button"
+            id="headBtn-account"
+            onclick="navigateTo('account', 'My Account')"
+            class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-extrabold flex items-center gap-1.5 transition bg-slate-100 text-slate-700 hover:bg-slate-200"
+          >
+            <span>👤 ACCOUNT (25BC227)</span>
+            <svg class="w-3.5 h-3.5 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="nav-dropdown-menu hidden absolute right-0 mt-1 w-56 bg-white rounded-2xl shadow-xl border border-slate-200 py-2 z-50">
+            <div class="px-3 py-1 text-[10px] font-extrabold uppercase text-slate-400">Account &amp; Lists (25BC227)</div>
+            <button type="button" onclick="navigateTo('account', 'My Account')" class="w-full text-left px-4 py-2 text-xs font-bold text-slate-700 hover:bg-blue-50 hover:text-zipBlue">My Account</button>
+            <button type="button" onclick="navigateTo('account', 'My Orders')" class="w-full text-left px-4 py-2 text-xs font-bold text-slate-700 hover:bg-blue-50 hover:text-zipBlue">My Orders</button>
+            <button type="button" onclick="navigateTo('account', 'Saved Addresses')" class="w-full text-left px-4 py-2 text-xs font-bold text-slate-700 hover:bg-blue-50 hover:text-zipBlue">Saved Addresses</button>
+            <button type="button" onclick="navigateTo('account', 'My Shopping Lists')" class="w-full text-left px-4 py-2 text-xs font-bold text-slate-700 hover:bg-blue-50 hover:text-zipBlue">My Shopping Lists</button>
+          </div>
+        </div>
+
+      </nav>
+    </div>
+  </header>
+
+  <!-- ACTIVE SUBHEAD PILL BAR (Dynamic contextual sub-navigation for current Head) -->
+  <div class="bg-white border-b border-slate-200/80 py-2.5 px-3 sm:px-6">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-3 flex-wrap">
+      <div class="flex items-center gap-2 text-xs font-bold text-slate-500">
+        <span id="breadcrumbHead" class="text-zipBlue font-extrabold">1. Store (25BC225)</span>
+        <span>›</span>
+        <span id="breadcrumbSubhead" class="text-slate-900 font-extrabold">All Products</span>
+      </div>
+      <div id="subheadPillsContainer" class="flex items-center gap-1.5 flex-wrap">
+        <!-- Populated dynamically by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT AREA -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 py-6 space-y-8">
+
+    <!-- ===================================================== -->
+    <!-- HEAD 1: Store (25BC225)                               -->
+    <!-- ===================================================== -->
+    <div id="section-store" class="space-y-6">
+      <!-- Hero Banner -->
+      <div class="zip-gradient rounded-3xl p-6 sm:p-8 text-white shadow-lg flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="space-y-3 max-w-xl">
+          <span class="inline-block bg-white/20 px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider">
+            Store (25BC225) • 15–20 Min Reliable SLA
+          </span>
+          <h1 class="text-2xl sm:text-4xl font-black leading-tight">Guaranteed Fresh. Always in Stock.</h1>
+          <p class="text-xs sm:text-sm text-blue-50 leading-relaxed">
+            100% real-time dark store inventory synchronization, cold-chain quality tracking (3.6°C), and flat transparent checkout with <strong>₹0 handling or surge fees</strong>.
+          </p>
+          <div class="flex flex-wrap gap-2.5 pt-1">
+            <button type="button" onclick="navigateTo('store', 'Snacks & Beverages')" class="bg-white text-slate-900 hover:bg-amber-300 font-extrabold text-xs px-4 py-2.5 rounded-xl shadow">
+              🍟 Shop Snacks &amp; Beverages
+            </button>
+            <button type="button" onclick="applySmartBundle()" class="bg-slate-900/90 hover:bg-slate-900 text-amber-300 border border-amber-400/40 font-extrabold text-xs px-4 py-2.5 rounded-xl">
+              ⚡ Add ₹678 Smart AOV Bundle to MyKart
+            </button>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3 w-full md:w-auto shrink-0 text-slate-900">
+          <div class="bg-white/95 p-3.5 rounded-2xl text-center">
+            <div class="text-2xl font-black text-emerald-600">0%</div>
+            <div class="text-[11px] font-bold text-slate-600">Mid-Cart Stockouts</div>
+          </div>
+          <div class="bg-white/95 p-3.5 rounded-2xl text-center">
+            <div class="text-2xl font-black text-zipBlue">₹0</div>
+            <div class="text-[11px] font-bold text-slate-600">Handling &amp; Surge Fees</div>
+          </div>
+          <div class="bg-white/95 p-3.5 rounded-2xl text-center">
+            <div class="text-2xl font-black text-teal-600">3.6°C</div>
+            <div class="text-[11px] font-bold text-slate-600">Cold-Chain Fresh</div>
+          </div>
+          <div class="bg-white/95 p-3.5 rounded-2xl text-center">
+            <div class="text-2xl font-black text-amber-600">17m</div>
+            <div class="text-[11px] font-bold text-slate-600">Guaranteed Dispatch</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category Icon Tiles (8 Exact Subheads of Store 25BC225) -->
+      <div id="storeCategoryTiles" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2.5">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- Store Header & Product Grid -->
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 id="storeCurrentCategoryTitle" class="text-lg sm:text-xl font-black text-slate-900">All Products</h2>
+          <p class="text-xs text-slate-500">Live dark-store inventory • Automated SKU expiry verification</p>
+        </div>
+        <span id="storeProductCountBadge" class="text-xs font-extrabold bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1 rounded-full">
+          24 Products In Stock
+        </span>
+      </div>
+
+      <div id="storeProductGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3.5">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- HEAD 2: CUSTOMER SUPPORT (25BC224)                    -->
+    <!-- ===================================================== -->
+    <div id="section-support" class="hidden space-y-6">
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 card-shadow">
+        <span class="text-xs font-extrabold uppercase bg-blue-50 text-zipBlue px-3 py-1 rounded-full">Head 2 • Roll No: 25BC224</span>
+        <h2 id="supportSubheadTitle" class="text-2xl font-black text-slate-900 mt-2">Help Centre</h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1">Instant resolution backed by real-time dark store telemetry and utility-first WhatsApp alerts.</p>
+        <div id="supportDynamicBody" class="mt-6"></div>
+      </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- HEAD 3: POLICIES (25BC215)                            -->
+    <!-- ===================================================== -->
+    <div id="section-policies" class="hidden space-y-6">
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 card-shadow">
+        <span class="text-xs font-extrabold uppercase bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full">Head 3 • Roll No: 25BC215</span>
+        <h2 id="policiesSubheadTitle" class="text-2xl font-black text-slate-900 mt-2">Privacy Policy</h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1">Transparent governance designed for digital-native shoppers—no hidden clauses or surprise fees.</p>
+        <div id="policiesDynamicBody" class="mt-6"></div>
+      </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- HEAD 4: MyKart (25BC216)                              -->
+    <!-- ===================================================== -->
+    <div id="section-mykart" class="hidden space-y-6">
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 card-shadow">
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 pb-4">
+          <div>
+            <span class="text-xs font-extrabold uppercase bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full">Head 4 • Roll No: 25BC216</span>
+            <h2 class="text-2xl font-black text-slate-900 mt-2">MyKart — Transparent Zero-Fee Basket</h2>
+            <p class="text-xs text-slate-500">100% Dark Store Inventory Locked • Delivery in 17 Minutes</p>
+          </div>
+          <button type="button" onclick="applySmartBundle()" class="bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs px-4 py-2.5 rounded-xl shadow">
+            ⚡ Load ₹678 Smart AOV Bundle
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
+          <!-- Left: Cart Items & AOV Progress -->
+          <div class="lg:col-span-7 space-y-4">
+            <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200 space-y-2">
+              <div class="flex justify-between text-xs font-extrabold">
+                <span id="kartProgressText">Add ₹299 for FREE Delivery</span>
+                <span class="text-zipBlue">Target AOV: ₹501–₹1,000</span>
+              </div>
+              <div class="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden">
+                <div id="kartProgressBar" class="bg-blinkGreen h-full transition-all duration-300" style="width: 50%"></div>
+              </div>
+              <p class="text-[11px] text-slate-500">Orders above ₹501 unlock an extra <strong>₹50 Smart Bundle Instant Discount</strong>!</p>
+            </div>
+
+            <div id="myKartItemsContainer" class="space-y-3"></div>
+          </div>
+
+          <!-- Right: Transparent Bill Summary -->
+          <div class="lg:col-span-5 space-y-4">
+            <div class="bg-slate-900 text-white rounded-2xl p-4 flex items-center justify-between">
+              <div>
+                <div class="text-xs font-black text-amber-300">👑 ZipPass Membership (₹99/mo)</div>
+                <div class="text-[11px] text-slate-300">Unlimited ₹0 delivery (&gt;₹299) &amp; priority 10 AM–4 PM dispatch</div>
+              </div>
+              <button type="button" id="kartZipPassBtn" onclick="toggleZipPass()" class="bg-amber-400 text-slate-950 font-extrabold text-xs px-3 py-1.5 rounded-xl">
+                Apply Pass
+              </button>
+            </div>
+
+            <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200 space-y-2.5 text-xs">
+              <h3 class="text-sm font-black text-slate-900">Transparent Bill Summary</h3>
+              <div class="flex justify-between text-slate-600">
+                <span>Items Total (MRP)</span>
+                <span id="kartMrpTotal" class="font-bold">₹0</span>
+              </div>
+              <div class="flex justify-between text-emerald-600 font-semibold">
+                <span>Product Discount Savings</span>
+                <span id="kartSavings">- ₹0</span>
+              </div>
+              <div class="flex justify-between text-slate-700">
+                <span>Handling Fee <span class="line-through text-slate-400 text-[10px]">₹9 on Blinkit/Zepto</span></span>
+                <span class="font-extrabold text-emerald-600">₹0 (FREE)</span>
+              </div>
+              <div class="flex justify-between text-slate-700">
+                <span>Rain / Peak Surge Fee <span class="line-through text-slate-400 text-[10px]">₹25 on Incumbents</span></span>
+                <span class="font-extrabold text-emerald-600">₹0 (FREE)</span>
+              </div>
+              <div class="flex justify-between text-slate-700">
+                <span>Delivery Partner Fee (17-min SLA)</span>
+                <span id="kartDeliveryFee" class="font-bold">₹0</span>
+              </div>
+              <div id="kartBundleDiscountRow" class="hidden justify-between text-zipBlue font-bold">
+                <span>🎁 Smart Bundle AOV (&gt;₹500) Reward</span>
+                <span>- ₹50</span>
+              </div>
+              <div id="kartPassFeeRow" class="hidden justify-between text-amber-700 font-bold">
+                <span>👑 ZipPass Monthly Plan</span>
+                <span>+ ₹99</span>
+              </div>
+              <div class="border-t border-slate-200 pt-3 flex justify-between text-base font-black text-slate-900">
+                <span>Grand Total To Pay</span>
+                <span id="kartGrandTotal">₹0</span>
+              </div>
+            </div>
+
+            <button type="button" onclick="placeOrder()" class="w-full bg-blinkGreen hover:bg-emerald-700 text-white font-black text-sm py-3.5 px-5 rounded-2xl shadow-lg transition">
+              Proceed to 1-Click Checkout →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- HEAD 5: ACCOUNT (25BC227)                             -->
+    <!-- ===================================================== -->
+    <div id="section-account" class="hidden space-y-6">
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 card-shadow">
+        <span class="text-xs font-extrabold uppercase bg-purple-50 text-purple-700 px-3 py-1 rounded-full">Head 5 • Roll No: 25BC227</span>
+        <h2 id="accountSubheadTitle" class="text-2xl font-black text-slate-900 mt-2">My Account</h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1">Manage your student/professional profile, past orders, saved dark-store addresses, and weekly shopping lists.</p>
+        <div id="accountDynamicBody" class="mt-6"></div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="hidden fixed bottom-5 right-5 z-50 bg-slate-900 text-white text-xs font-bold px-4 py-3 rounded-2xl shadow-xl border border-slate-700">
+    <span id="toastText">Updated MyKart!</span>
+  </div>
+
+  <!-- FOOTER WITH ALL 5 HEADS & ROLL NUMBERS -->
+  <footer class="bg-white border-t border-slate-200 mt-12 py-10 text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-5 gap-6">
+      <div>
+        <div class="font-extrabold text-slate-900 mb-2">1. Store (25BC225)</div>
+        <ul class="space-y-1">
+          <li><button onclick="navigateTo('store','All Products')" class="hover:text-zipBlue">All Products</button></li>
+          <li><button onclick="navigateTo('store','Fruits & Vegetables')" class="hover:text-zipBlue">Fruits &amp; Vegetables</button></li>
+          <li><button onclick="navigateTo('store','Dairy & Bakery')" class="hover:text-zipBlue">Dairy &amp; Bakery</button></li>
+          <li><button onclick="navigateTo('store','Snacks & Beverages')" class="hover:text-zipBlue">Snacks &amp; Beverages</button></li>
+          <li><button onclick="navigateTo('store','Instant Food')" class="hover:text-zipBlue">Instant Food</button></li>
+          <li><button onclick="navigateTo('store','Personal Care')" class="hover:text-zipBlue">Personal Care</button></li>
+          <li><button onclick="navigateTo('store','Home & Kitchen')" class="hover:text-zipBlue">Home &amp; Kitchen</button></li>
+          <li><button onclick="navigateTo('store','Other Categories')" class="hover:text-zipBlue">Other Categories</button></li>
+        </ul>
+      </div>
+      <div>
+        <div class="font-extrabold text-slate-900 mb-2">2. CUSTOMER SUPPORT (25BC224)</div>
+        <ul class="space-y-1">
+          <li><button onclick="navigateTo('support','Help Centre')" class="hover:text-zipBlue">Help Centre</button></li>
+          <li><button onclick="navigateTo('support','FAQs')" class="hover:text-zipBlue">FAQs</button></li>
+          <li><button onclick="navigateTo('support','Contact Us')" class="hover:text-zipBlue">Contact Us</button></li>
+          <li><button onclick="navigateTo('support','Cancellation Policy')" class="hover:text-zipBlue">Cancellation Policy</button></li>
+          <li><button onclick="navigateTo('support','Returns & Refunds')" class="hover:text-zipBlue">Returns &amp; Refunds</button></li>
+        </ul>
+      </div>
+      <div>
+        <div class="font-extrabold text-slate-900 mb-2">3. POLICIES (25BC215)</div>
+        <ul class="space-y-1">
+          <li><button onclick="navigateTo('policies','Privacy Policy')" class="hover:text-zipBlue">Privacy Policy</button></li>
+          <li><button onclick="navigateTo('policies','Terms & Conditions')" class="hover:text-zipBlue">Terms &amp; Conditions</button></li>
+          <li><button onclick="navigateTo('policies','Delivery Policy')" class="hover:text-zipBlue">Delivery Policy</button></li>
+          <li><button onclick="navigateTo('policies','Grievance Redressal')" class="hover:text-zipBlue">Grievance Redressal</button></li>
+        </ul>
+      </div>
+      <div>
+        <div class="font-extrabold text-slate-900 mb-2">4. MyKart (25BC216)</div>
+        <ul class="space-y-1">
+          <li><button onclick="navigateTo('mykart','MyKart')" class="hover:text-zipBlue font-bold text-emerald-700">Open MyKart Basket</button></li>
+          <li>₹0 Handling &amp; Surge Fee</li>
+          <li>15–20 Min Reliable SLA</li>
+        </ul>
+      </div>
+      <div>
+        <div class="font-extrabold text-slate-900 mb-2">5. ACCOUNT (25BC227)</div>
+        <ul class="space-y-1">
+          <li><button onclick="navigateTo('account','My Account')" class="hover:text-zipBlue">My Account</button></li>
+          <li><button onclick="navigateTo('account','My Orders')" class="hover:text-zipBlue">My Orders</button></li>
+          <li><button onclick="navigateTo('account','Saved Addresses')" class="hover:text-zipBlue">Saved Addresses</button></li>
+          <li><button onclick="navigateTo('account','My Shopping Lists')" class="hover:text-zipBlue">My Shopping Lists</button></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // --- EXACT NAVIGATION STRUCTURE REQUESTED BY USER ---
+    const NAV_STRUCTURE = {
+      store: {
+        title: '1. Store (25BC225)',
+        subheads: [
+          'All Products',
+          'Fruits & Vegetables',
+          'Dairy & Bakery',
+          'Snacks & Beverages',
+          'Instant Food',
+          'Personal Care',
+          'Home & Kitchen',
+          'Other Categories'
+        ]
+      },
+      support: {
+        title: '2. CUSTOMER SUPPORT (25BC224)',
+        subheads: [
+          'Help Centre',
+          'FAQs',
+          'Contact Us',
+          'Cancellation Policy',
+          'Returns & Refunds'
+        ]
+      },
+      policies: {
+        title: '3. POLICIES (25BC215)',
+        subheads: [
+          'Privacy Policy',
+          'Terms & Conditions',
+          'Delivery Policy',
+          'Grievance Redressal'
+        ]
+      },
+      mykart: {
+        title: '4. MyKart (25BC216)',
+        subheads: ['MyKart']
+      },
+      account: {
+        title: '5. ACCOUNT (25BC227)',
+        subheads: [
+          'My Account',
+          'My Orders',
+          'Saved Addresses',
+          'My Shopping Lists'
+        ]
+      }
+    };
+
+    const STORE_CATEGORY_ICONS = {
+      'All Products': '🛒',
+      'Fruits & Vegetables': '🥦',
+      'Dairy & Bakery': '🥛',
+      'Snacks & Beverages': '🍟',
+      'Instant Food': '🍜',
+      'Personal Care': '🧴',
+      'Home & Kitchen': '🏠',
+      'Other Categories': '🔌'
+    };
+
+    // --- PRODUCTS ACROSS ALL 8 STORE (25BC225) SUBHEADS ---
+    const PRODUCTS = [
+      // Fruits & Vegetables
+      { id: 'p1', name: 'Green Zucchini by BetterGreens', cat: 'Fruits & Vegetables', weight: '250 g', price: 139, mrp: 170, temp: '3.8°C Cold-Chain', emoji: '🥒', bg: '#DCFCE7' },
+      { id: 'p2', name: 'Kashmiri Orchard Red Apple', cat: 'Fruits & Vegetables', weight: '500 g', price: 77, mrp: 95, temp: '3.8°C Cold-Chain', emoji: '🍎', bg: '#FEE2E2' },
+      { id: 'p3', name: 'Fresh Residue-Free Broccoli', cat: 'Fruits & Vegetables', weight: '300 g', price: 69, mrp: 86, temp: '3.6°C Mist Rack', emoji: '🥦', bg: '#D1FAE5' },
+      { id: 'p4', name: 'Nashik Red Onion & Potato Combo', cat: 'Fruits & Vegetables', weight: '2 kg', price: 88, mrp: 110, temp: 'Dry Ventilated', emoji: '🧅', bg: '#FEF3C7' },
+
+      // Dairy & Bakery
+      { id: 'p5', name: 'Amul Taaza Homogenised Milk', cat: 'Dairy & Bakery', weight: '500 ml', price: 31, mrp: 33, temp: '3.4°C Cold-Chain', emoji: '🥛', bg: '#E0F2FE' },
+      { id: 'p6', name: 'Milky Mist High Protein Paneer', cat: 'Dairy & Bakery', weight: '200 g', price: 91, mrp: 165, temp: '3.2°C Cold-Chain', emoji: '🧀', bg: '#F0FDF4' },
+      { id: 'p7', name: 'Table White Farm Fresh Eggs', cat: 'Dairy & Bakery', weight: '10 pcs', price: 105, mrp: 140, temp: '4.0°C Cold-Chain', emoji: '🥚', bg: '#FFFBEB' },
+      { id: 'p8', name: 'Zero Maida Multigrain Sourdough Loaf', cat: 'Dairy & Bakery', weight: '400 g', price: 85, mrp: 110, temp: 'Baked 6 AM Today', emoji: '🍞', bg: '#FFEDD5' },
+
+      // Snacks & Beverages
+      { id: 'p9', name: 'Uncle Chipps Spicy Treat Multipack', cat: 'Snacks & Beverages', weight: '3 x 80 g', price: 108, mrp: 144, temp: 'Ambient', emoji: '🥔', bg: '#FEF3C7' },
+      { id: 'p10', name: 'Whole Farm Roasted Raw Makhana', cat: 'Snacks & Beverages', weight: '100 g', price: 127, mrp: 210, temp: 'Ambient', emoji: '🌰', bg: '#FDE68A' },
+      { id: 'p11', name: 'Coca-Cola Diet Coke Multipack', cat: 'Snacks & Beverages', weight: '6 x 200 ml', price: 399, mrp: 600, temp: '3.8°C Chilled', emoji: '🥤', bg: '#FEE2E2' },
+      { id: 'p12', name: 'Epigamia Blueberry Protein Smoothie', cat: 'Snacks & Beverages', weight: '200 ml', price: 90, mrp: 100, temp: '3.5°C Chilled', emoji: '🫐', bg: '#EDE9FE' },
+
+      // Instant Food
+      { id: 'p13', name: 'Maggi 2-Minute Masala Noodles Pack', cat: 'Instant Food', weight: '4 x 70 g', price: 58, mrp: 64, temp: 'Ambient', emoji: '🍜', bg: '#FEF9C3' },
+      { id: 'p14', name: 'Samyang Buldak Hot Korean Ramen', cat: 'Instant Food', weight: '140 g', price: 119, mrp: 149, temp: 'Ambient', emoji: '🌶️', bg: '#FFE4E6' },
+      { id: 'p15', name: 'iD Fresh Natural Malabari Parotta', cat: 'Instant Food', weight: '400 g', price: 78, mrp: 95, temp: '3.8°C Cold-Chain', emoji: '🫓', bg: '#FFEDD5' },
+
+      // Personal Care
+      { id: 'p16', name: 'Minimalist 2% Salicylic Acid Face Wash', cat: 'Personal Care', weight: '100 ml', price: 279, mrp: 299, temp: 'Sealed Batch', emoji: '🧴', bg: '#F3E8FF' },
+      { id: 'p17', name: 'Nivea Men Fresh Active Roll-On', cat: 'Personal Care', weight: '50 ml', price: 169, mrp: 249, temp: 'Sealed Batch', emoji: '✨', bg: '#DBEAFE' },
+      { id: 'p18', name: 'Sensodyne Rapid Relief Toothpaste', cat: 'Personal Care', weight: '80 g', price: 145, mrp: 165, temp: 'Sealed Batch', emoji: '🪥', bg: '#E0F2FE' },
+
+      // Home & Kitchen
+      { id: 'p19', name: 'Beco Bamboo Kitchen Tissue Rolls', cat: 'Home & Kitchen', weight: '4 Rolls', price: 149, mrp: 220, temp: 'Ambient', emoji: '🧻', bg: '#F1F5F9' },
+      { id: 'p20', name: 'Vim Dishwash Liquid Gel Lemon', cat: 'Home & Kitchen', weight: '750 ml', price: 155, mrp: 199, temp: 'Ambient', emoji: '🍋', bg: '#ECFCCB' },
+      { id: 'p21', name: 'Borosil Glass Leakproof Lunch Box', cat: 'Home & Kitchen', weight: '2 Containers', price: 449, mrp: 650, temp: 'Box Packed', emoji: '🍱', bg: '#E0E7FF' },
+
+      // Other Categories
+      { id: 'p22', name: 'boAt 65W Type-C Fast Braided Cable', cat: 'Other Categories', weight: '1.5 m', price: 199, mrp: 499, temp: '1 Yr Warranty', emoji: '🔌', bg: '#E0E7FF' },
+      { id: 'p23', name: 'Hostel Late-Night Exam Survival Box', cat: 'Other Categories', weight: 'Combo Pack', price: 299, mrp: 450, temp: 'Gift Pack', emoji: '🎁', bg: '#FCE7F3' },
+      { id: 'p24', name: 'Classmate Pulse Spiral Notebook (Set of 3)', cat: 'Other Categories', weight: '3 x 180 Pages', price: 210, mrp: 270, temp: 'Campus Store', emoji: '📓', bg: '#FEF3C7' }
+    ];
+
+    const state = {
+      currentHead: 'store',
+      currentSubhead: 'All Products',
+      searchQuery: '',
+      zipPass: false,
+      cart: { p5: 1, p7: 1, p9: 1 },
+      orders: [
+        { id: 'ZC-9841', date: '28 Oct 2026, 2:15 PM', items: 'Amul Milk, 10 Eggs, Uncle Chipps, Raw Makhana', total: 371, status: 'Delivered in 16 mins (₹0 Handling Fee)' },
+        { id: 'ZC-9712', date: '25 Oct 2026, 1:05 PM', items: 'Green Zucchini, Kashmiri Apple, Milky Mist Paneer, Maggi', total: 365, status: 'Delivered in 17 mins (Cold-Chain 3.6°C)' }
+      ]
+    };
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      document.getElementById('toastText').textContent = msg;
+      t.classList.remove('hidden');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => t.classList.add('hidden'), 2200);
+    }
+
+    function navigateTo(head, subhead) {
+      state.currentHead = head;
+      state.currentSubhead = subhead || NAV_STRUCTURE[head].subheads[0];
+
+      // Toggle visible main section
+      ['store', 'support', 'policies', 'mykart', 'account'].forEach(h => {
+        const sec = document.getElementById(`section-${h}`);
+        const btn = document.getElementById(`headBtn-${h}`);
+        if (h === head) {
+          sec.classList.remove('hidden');
+          btn.className = 'px-3.5 py-2 rounded-xl text-xs sm:text-sm font-extrabold flex items-center gap-1.5 transition bg-zipBlue text-white';
+        } else {
+          sec.classList.add('hidden');
+          btn.className = 'px-3.5 py-2 rounded-xl text-xs sm:text-sm font-extrabold flex items-center gap-1.5 transition bg-slate-100 text-slate-700 hover:bg-slate-200';
+        }
+      });
+
+      renderBreadcrumbsAndPills();
+      renderActiveSection();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderBreadcrumbsAndPills() {
+      const headObj = NAV_STRUCTURE[state.currentHead];
+      document.getElementById('breadcrumbHead').textContent = headObj.title;
+      document.getElementById('breadcrumbSubhead').textContent = state.currentSubhead;
+
+      const pills = document.getElementById('subheadPillsContainer');
+      pills.innerHTML = headObj.subheads.map(sub => {
+        const active = sub === state.currentSubhead;
+        return `
+          <button
+            type="button"
+            onclick="navigateTo('${state.currentHead}', '${sub.replace(/'/g, "\\'")}')"
+            class="px-3 py-1 rounded-full text-xs font-bold transition ${
+              active ? 'bg-slate-900 text-white shadow-xs' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+            }"
+          >
+            ${sub}
+          </button>
+        `;
+      }).join('');
+    }
+
+    function renderStoreSection() {
+      // Render 8 category tiles
+      const tilesEl = document.getElementById('storeCategoryTiles');
+      tilesEl.innerHTML = NAV_STRUCTURE.store.subheads.map(sub => {
+        const active = state.currentSubhead === sub;
+        return `
+          <button
+            type="button"
+            onclick="navigateTo('store', '${sub}')"
+            class="p-3 rounded-2xl border text-center transition flex flex-col items-center justify-center ${
+              active ? 'bg-slate-900 text-white border-slate-900 shadow-md' : 'bg-white hover:bg-slate-50 border-slate-200 text-slate-800 card-shadow'
+            }"
+          >
+            <div class="text-2xl mb-1">${STORE_CATEGORY_ICONS[sub] || '📦'}</div>
+            <div class="text-[11px] font-extrabold leading-tight">${sub}</div>
+          </button>
+        `;
+      }).join('');
+
+      // Filter products
+      const q = state.searchQuery.trim().toLowerCase();
+      const filtered = PRODUCTS.filter(p => {
+        const matchesCat = state.currentSubhead === 'All Products' || p.cat === state.currentSubhead;
+        const matchesSearch = !q || p.name.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q);
+        return matchesCat && matchesSearch;
+      });
+
+      document.getElementById('storeCurrentCategoryTitle').textContent = state.searchQuery
+        ? `${state.currentSubhead} — Search: "${state.searchQuery}"`
+        : state.currentSubhead;
+      document.getElementById('storeProductCountBadge').textContent = `${filtered.length} Products In Stock`;
+
+      const grid = document.getElementById('storeProductGrid');
+      grid.innerHTML = filtered.map(p => {
+        const qty = state.cart[p.id] || 0;
+        const disc = Math.round(((p.mrp - p.price) / p.mrp) * 100);
+        return `
+          <div class="bg-white rounded-2xl p-3 border border-slate-200 card-shadow flex flex-col justify-between relative">
+            ${disc > 0 ? `<span class="absolute top-2.5 left-2.5 bg-zipBlue text-white text-[10px] font-black px-2 py-0.5 rounded">${disc}% OFF</span>` : ''}
+            <div>
+              <div class="h-24 rounded-xl flex items-center justify-center text-4xl mb-2.5" style="background:${p.bg}">${p.emoji}</div>
+              <div class="flex items-center gap-1 mb-1">
+                <span class="bg-slate-100 text-slate-700 text-[9px] font-extrabold px-1.5 py-0.5 rounded">⏱ 17 MINS</span>
+                <span class="bg-emerald-50 text-emerald-700 text-[9px] font-bold px-1.5 py-0.5 rounded">${p.temp}</span>
+              </div>
+              <h3 class="text-xs font-extrabold text-slate-900 line-clamp-2 min-h-[2.2rem]">${p.name}</h3>
+              <div class="text-[11px] text-slate-500 font-semibold mt-0.5">${p.weight}</div>
+            </div>
+            <div class="flex items-center justify-between pt-2.5 mt-2 border-t border-slate-100">
+              <div>
+                <div class="text-sm font-black text-slate-900">₹${p.price}</div>
+                <div class="text-[10px] text-slate-400 line-through">₹${p.mrp}</div>
+              </div>
+              ${qty === 0 ? `
+                <button type="button" onclick="updateQty('${p.id}', 1)" class="bg-blinkLightGreen hover:bg-blinkGreen text-blinkGreen hover:text-white border border-blinkGreen font-extrabold text-xs px-3.5 py-1.5 rounded-lg transition">
+                  ADD
+                </button>
+              ` : `
+                <div class="flex items-center bg-blinkGreen text-white rounded-lg font-extrabold text-xs">
+                  <button type="button" onclick="updateQty('${p.id}', -1)" class="px-2 py-1">−</button>
+                  <span class="px-2">${qty}</span>
+                  <button type="button" onclick="updateQty('${p.id}', 1)" class="px-2 py-1">+</button>
+                </div>
+              `}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderSupportSection() {
+      document.getElementById('supportSubheadTitle').textContent = state.currentSubhead;
+      const body = document.getElementById('supportDynamicBody');
+      const contentMap = {
+        'Help Centre': `
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
+              <div class="text-base font-black text-slate-900">📦 Where is my order?</div>
+              <p class="text-slate-600">Track live 15–20 minute dark-store dispatch with real-time rider GPS and WhatsApp utility updates.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
+              <div class="text-base font-black text-slate-900">❄️ Cold-Chain Quality Check</div>
+              <p class="text-slate-600">Every dairy, produce, and bakery SKU is scanned for temperature (3.6°C) and automated expiry before dispatch.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
+              <div class="text-base font-black text-slate-900">🧾 Zero Hidden Fee Guarantee</div>
+              <p class="text-slate-600">Never pay handling charges, rain fees, or peak surge charges on any ZipCart checkout.</p>
+            </div>
+          </div>
+        `,
+        'FAQs': `
+          <div class="space-y-3 text-xs">
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+              <div class="font-extrabold text-slate-900">Q1. Why does ZipCart promise 15–20 minutes instead of 10 minutes?</div>
+              <p class="text-slate-600 mt-1">Our primary research (N=80) shows 79.7% of consumers gladly accept a 15–25 minute window when guaranteed 100% stock availability and ₹0 surge fees.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+              <div class="font-extrabold text-slate-900">Q2. How does ZipCart prevent mid-cart stockouts (49.4% industry pain point)?</div>
+              <p class="text-slate-600 mt-1">Our frontend syncs in real time with local dark-store shelves, locking your items the moment you add them to MyKart.</p>
+            </div>
+          </div>
+        `,
+        'Contact Us': `
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <div class="p-5 rounded-2xl bg-emerald-50 border border-emerald-200 space-y-2">
+              <div class="font-black text-base text-emerald-950">💬 WhatsApp Utility Desk (24×7)</div>
+              <p class="text-emerald-800">Message <strong>+91 98765 43210</strong> for instant order updates, rider coordination, or cold-chain verification.</p>
+            </div>
+            <div class="p-5 rounded-2xl bg-blue-50 border border-blue-200 space-y-2">
+              <div class="font-black text-base text-slate-900">📧 Campus &amp; Metro Support Desk</div>
+              <p class="text-slate-600">Email: <strong>support@zipcart.in</strong> • Roll No. Lead: Harsh Kumar (25BC224)</p>
+            </div>
+          </div>
+        `,
+        'Cancellation Policy': `
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2 text-xs">
+            <div class="font-black text-sm text-slate-900">100% Free Cancellation Before Rider Dispatch</div>
+            <p class="text-slate-600">Cancel any order within 2 minutes of placement or prior to rider dispatch with <strong>₹0 cancellation fee</strong> and instant refund initiation.</p>
+          </div>
+        `,
+        'Returns & Refunds': `
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2 text-xs">
+            <div class="font-black text-sm text-slate-900">No-Questions-Asked Freshness &amp; Cold-Chain Refund</div>
+            <p class="text-slate-600">To solve the 8.9% damaged/expired produce frustration, any item failing our 3.6°C cold-chain standard is replaced in 15 minutes or refunded 100% to your original UPI/wallet within 2 hours.</p>
+          </div>
+        `
+      };
+      body.innerHTML = contentMap[state.currentSubhead] || contentMap['Help Centre'];
+    }
+
+    function renderPoliciesSection() {
+      document.getElementById('policiesSubheadTitle').textContent = state.currentSubhead;
+      const body = document.getElementById('policiesDynamicBody');
+      const map = {
+        'Privacy Policy': `
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2 text-xs leading-relaxed">
+            <div class="font-black text-sm text-slate-900">Zero Push-Spam &amp; Strict Data Privacy (Lead: Gunjan Sahu — 25BC215)</div>
+            <p class="text-slate-600">Generic app push notifications scored a poor 2.14/5.0 in our consumer study. ZipCart never sells user data or blasts promotional push spam—we communicate strictly via opt-in WhatsApp/SMS utility alerts (40.0% highest user preference).</p>
+          </div>
+        `,
+        'Terms & Conditions': `
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2 text-xs leading-relaxed">
+            <div class="font-black text-sm text-slate-900">Transparent Flat-Rate Pricing Mandate</div>
+            <p class="text-slate-600">All prices displayed on ZipCart include applicable taxes with ₹0 handling fee, ₹0 surge fee, and ₹0 rain fee. ZipPass members (₹99/mo or ₹249/quarter) receive unlimited free delivery on baskets above ₹299.</p>
+          </div>
+        `,
+        'Delivery Policy': `
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2 text-xs leading-relaxed">
+            <div class="font-black text-sm text-slate-900">15–20 Minute Reliable SLA &amp; 10 AM–4 PM Peak Capacity</div>
+            <p class="text-slate-600">With 46.5% of daily orders occurring between 10 AM and 4 PM, ZipCart staffs dark stores specifically for afternoon impulse and staple bundles, ensuring safe, reliable 15–20 minute fulfillment.</p>
+          </div>
+        `,
+        'Grievance Redressal': `
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2 text-xs leading-relaxed">
+            <div class="font-black text-sm text-slate-900">Level 1 &amp; Level 2 Grievance Redressal Officer</div>
+            <p class="text-slate-600">Nodal Officer: Gunjan Sahu (25BC215) • Email: grievance@zipcart.in • Guaranteed resolution SLA: Under 24 hours for all billing, cold-chain, or delivery escalations.</p>
+          </div>
+        `
+      };
+      body.innerHTML = map[state.currentSubhead] || map['Privacy Policy'];
+    }
+
+    function renderAccountSection() {
+      document.getElementById('accountSubheadTitle').textContent = state.currentSubhead;
+      const body = document.getElementById('accountDynamicBody');
+      if (state.currentSubhead === 'My Account') {
+        body.innerHTML = `
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+              <div class="font-black text-base text-slate-900">👤 Harshit (Roll No: 25BC227)</div>
+              <p class="text-slate-600">Segment: Metro Tier-1 Student / Power User (Orders 2–3x / week)</p>
+              <p class="text-emerald-700 font-bold">✓ WhatsApp Utility Alerts Enabled (+91 98XXXXXX10)</p>
+            </div>
+            <div class="p-5 rounded-2xl bg-slate-900 text-white space-y-2">
+              <div class="font-black text-base text-amber-300">👑 ZipPass Membership: ${state.zipPass ? 'ACTIVE (₹99/mo)' : 'INACTIVE'}</div>
+              <p class="text-slate-300">Unlimited free delivery on orders &gt; ₹299 + priority 10 AM–4 PM dispatch.</p>
+              <button type="button" onclick="toggleZipPass()" class="bg-amber-400 text-slate-950 font-extrabold px-4 py-2 rounded-xl">
+                ${state.zipPass ? 'Manage ZipPass' : 'Activate ZipPass @ ₹99/mo'}
+              </button>
+            </div>
+          </div>
+        `;
+      } else if (state.currentSubhead === 'My Orders') {
+        body.innerHTML = `<div class="space-y-3 text-xs">` + state.orders.map(o => `
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <div class="font-black text-sm text-slate-900">Order #${o.id} • ₹${o.total}</div>
+              <div class="text-slate-500">${o.date} • ${o.items}</div>
+              <div class="text-emerald-700 font-bold mt-0.5">✓ ${o.status}</div>
+            </div>
+            <button type="button" onclick="applySmartBundle()" class="bg-blinkGreen text-white font-extrabold px-4 py-2 rounded-xl">
+              ↻ 1-Click Reorder to MyKart
+            </button>
+          </div>
+        `).join('') + `</div>`;
+      } else if (state.currentSubhead === 'Saved Addresses') {
+        body.innerHTML = `
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <div class="p-4 rounded-2xl bg-blue-50 border border-zipBlue space-y-1">
+              <div class="font-black text-sm text-slate-900">🏠 Hostel / Campus Hub (Default)</div>
+              <p class="text-slate-600">Room 214, North Campus Student Hub, Delhi • Mapped Dark Store: 1.1 km (17 mins SLA)</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
+              <div class="font-black text-sm text-slate-900">🏢 Internship / Tech Park</div>
+              <p class="text-slate-600">Cyber Hub Tower B, Gurugram • Mapped Dark Store: 1.4 km (18 mins SLA)</p>
+            </div>
+          </div>
+        `;
+      } else {
+        body.innerHTML = `
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+              <div class="font-black text-sm text-slate-900">📋 Weekly Staples + Snacks Bundle (AOV ₹678)</div>
+              <p class="text-slate-600">Amul Milk (500ml), 10 Farm Eggs, Milky Mist Paneer, Green Zucchini, Kashmiri Apple, Uncle Chipps &amp; Raw Makhana.</p>
+              <button type="button" onclick="applySmartBundle()" class="bg-blinkGreen text-white font-extrabold px-4 py-2 rounded-xl">
+                + Add Entire List to MyKart
+              </button>
+            </div>
+            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+              <div class="font-black text-sm text-slate-900">🌙 Late-Night Exam Cravings List</div>
+              <p class="text-slate-600">Maggi 4-Pack, Samyang Korean Ramen, Diet Coke 6-Pack &amp; Epigamia Smoothie.</p>
+              <button type="button" onclick="addCravingsList()" class="bg-zipBlue text-white font-extrabold px-4 py-2 rounded-xl">
+                + Add Entire List to MyKart
+              </button>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    function updateQty(id, delta) {
+      const next = (state.cart[id] || 0) + delta;
+      if (next <= 0) delete state.cart[id];
+      else state.cart[id] = next;
+      renderHeaderCart();
+      renderActiveSection();
+    }
+
+    function applySmartBundle() {
+      state.cart = { p5: 1, p7: 1, p6: 1, p1: 1, p2: 1, p9: 1, p10: 1 };
+      renderHeaderCart();
+      navigateTo('mykart', 'MyKart');
+      showToast('⚡ Added ₹678 Smart Bundle to MyKart (25BC216)!');
+    }
+
+    function addCravingsList() {
+      state.cart['p13'] = 1;
+      state.cart['p14'] = 1;
+      state.cart['p11'] = 1;
+      state.cart['p12'] = 1;
+      renderHeaderCart();
+      navigateTo('mykart', 'MyKart');
+      showToast('🌙 Added Late-Night Cravings List to MyKart!');
+    }
+
+    function toggleZipPass() {
+      state.zipPass = !state.zipPass;
+      renderHeaderCart();
+      renderActiveSection();
+      showToast(state.zipPass ? '👑 ZipPass Activated!' : 'ZipPass Removed');
+    }
+
+    function getSummary() {
+      let count = 0, sub = 0, mrp = 0;
+      Object.entries(state.cart).forEach(([id, q]) => {
+        const p = PRODUCTS.find(x => x.id === id);
+        if (p && q > 0) {
+          count += q;
+          sub += p.price * q;
+          mrp += p.mrp * q;
+        }
+      });
+      const savings = mrp - sub;
+      const threshold = state.zipPass ? 299 : 499;
+      const delFee = sub === 0 ? 0 : (sub >= threshold ? 0 : 25);
+      const bundleReward = sub >= 501 ? 50 : 0;
+      const passCost = state.zipPass ? 99 : 0;
+      const total = Math.max(0, sub + delFee - bundleReward + passCost);
+      return { count, sub, mrp, savings, threshold, delFee, bundleReward, passCost, total };
+    }
+
+    function renderHeaderCart() {
+      const s = getSummary();
+      document.getElementById('headerCartCount').textContent = `${s.count} ${s.count === 1 ? 'item' : 'items'}`;
+      document.getElementById('headerCartTotal').textContent = `₹${s.total}`;
+      document.getElementById('navKartBadge').textContent = s.count;
+    }
+
+    function renderMyKartSection() {
+      const s = getSummary();
+      const pct = Math.min(100, Math.round((s.sub / 501) * 100));
+      document.getElementById('kartProgressBar').style.width = `${pct}%`;
+      document.getElementById('kartProgressText').textContent = s.sub >= 501
+        ? '🎉 Free Delivery + ₹50 Smart Bundle Reward Unlocked!'
+        : `Current Basket: ₹${s.sub} (Add ₹${Math.max(0, 501 - s.sub)} for ₹50 Bonus)`;
+
+      const container = document.getElementById('myKartItemsContainer');
+      const entries = Object.entries(state.cart).filter(([, q]) => q > 0);
+      if (entries.length === 0) {
+        container.innerHTML = `<div class="p-8 text-center bg-slate-50 rounded-2xl border border-slate-200 text-xs text-slate-500">Your MyKart (25BC216) is empty. Browse Store (25BC225) to add items!</div>`;
+      } else {
+        container.innerHTML = entries.map(([id, q]) => {
+          const p = PRODUCTS.find(x => x.id === id);
+          return `
+            <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-3">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl" style="background:${p.bg}">${p.emoji}</div>
+                <div>
+                  <div class="text-xs font-extrabold text-slate-900">${p.name}</div>
+                  <div class="text-[11px] text-slate-500">${p.weight} • ${p.temp}</div>
+                  <div class="text-xs font-black text-slate-900 mt-0.5">₹${p.price * q}</div>
+                </div>
+              </div>
+              <div class="flex items-center bg-blinkGreen text-white rounded-lg font-extrabold text-xs">
+                <button type="button" onclick="updateQty('${p.id}', -1)" class="px-2.5 py-1">−</button>
+                <span class="px-2">${q}</span>
+                <button type="button" onclick="updateQty('${p.id}', 1)" class="px-2.5 py-1">+</button>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      document.getElementById('kartZipPassBtn').textContent = state.zipPass ? '✓ Pass Applied' : 'Apply Pass';
+      document.getElementById('kartMrpTotal').textContent = `₹${s.mrp}`;
+      document.getElementById('kartSavings').textContent = `- ₹${s.savings}`;
+      document.getElementById('kartDeliveryFee').textContent = s.delFee === 0 ? 'FREE (₹0)' : `₹${s.delFee}`;
+      document.getElementById('kartBundleDiscountRow').className = s.bundleReward > 0 ? 'flex justify-between text-zipBlue font-bold' : 'hidden';
+      document.getElementById('kartPassFeeRow').className = state.zipPass ? 'flex justify-between text-amber-700 font-bold' : 'hidden';
+      document.getElementById('kartGrandTotal').textContent = `₹${s.total}`;
+    }
+
+    function placeOrder() {
+      const s = getSummary();
+      if (s.count === 0) {
+        showToast('Add items to MyKart first!');
+        return;
+      }
+      state.orders.unshift({
+        id: 'ZC-' + Math.floor(1000 + Math.random() * 9000),
+        date: 'Just now (17-min SLA active)',
+        items: `${s.count} items locked from North Campus Dark Store`,
+        total: s.total,
+        status: 'Dispatched • Cold-Chain 3.6°C • ₹0 Handling Fee'
+      });
+      state.cart = {};
+      renderHeaderCart();
+      navigateTo('account', 'My Orders');
+      showToast('🎉 Order Confirmed! Track live in ACCOUNT (25BC227) › My Orders');
+    }
+
+    function renderActiveSection() {
+      if (state.currentHead === 'store') renderStoreSection();
+      else if (state.currentHead === 'support') renderSupportSection();
+      else if (state.currentHead === 'policies') renderPoliciesSection();
+      else if (state.currentHead === 'mykart') renderMyKartSection();
+      else if (state.currentHead === 'account') renderAccountSection();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('searchInput').addEventListener('input', (e) => {
+        state.searchQuery = e.target.value;
+        if (state.currentHead !== 'store') navigateTo('store', 'All Products');
+        else renderStoreSection();
+      });
+      renderHeaderCart();
+      navigateTo('store', 'All Products');
+    });
+  </script>
+</body>
+</html>
